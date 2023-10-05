@@ -8,4 +8,3 @@ pub fn rotate(nums: &mut Vec<i32>, k: i32) {
     nums.swap_with_slice(& mut new);
     // a bit more of memory but very elegant I have to say
 }
-fn main() {}
