@@ -1,4 +1,5 @@
 pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
+    // essentially a double pointer
     let mut scan_index = 0usize;
     let mut valid_size = 0usize;
     while scan_index < nums.len() {
@@ -23,4 +24,3 @@ pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
 
     valid_size as i32
 }
-fn main() {}
