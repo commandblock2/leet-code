@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iterator>
+#include <iostream>
 #include <set>
 #include <vector>
 
@@ -32,4 +33,43 @@ std::vector<std::vector<int>> threeSumTerrible(std::vector<int>& nums) {
     }
 
     return return_;
+}
+
+std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
+    std::sort(nums.begin(), nums.end());
+
+    int const length = nums.size();
+
+
+    std::set<std::vector<int>> result;
+
+    for (int i = 0; i < length; i++) {
+        auto j = std::next(nums.begin(), i + 1), k = std::next(nums.end(), -1);
+
+        while (j < k) {
+            auto expr = *j + *k + nums[i];
+            if (expr > 0) {
+                k--;
+            } else if (expr < 0) {
+                j++;
+            } else {
+                result.insert(std::vector{{nums[i], *j, *k}});
+                k--;
+                j++;
+            }
+        }
+    }
+
+    std::vector<std::vector<int>> return_;
+
+    for (auto const & i : result) {
+        return_.push_back(i);
+    }
+
+    return return_;
+}
+
+int main() {
+    std::vector<int> a{{-1,0,1,2,-1,-4}};
+    threeSum(a);
 }
